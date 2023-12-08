@@ -1,10 +1,11 @@
 import Character from "./Character.js";
 
 class Snordsman extends Character {
-  constructor(name, type, health, level, attack, defence) {
-    super(name, type, health, level, attack, defence);
+  constructor(name, type) {
+    super(name, type);
+    this.attack = 40;
+    this.defence = 10;
   }
 }
 
-const snordsman = new Snordsman('Merlin', 'Snordsman', 100, 1, 40, 10);
-console.log(snordsman);
+export default Snordsman;

@@ -1,14 +1,16 @@
 class Character {
-  constructor(name, type, health, level, attack, defence) {
+  constructor(name, type) {
     this.validateName(name);
-    this.validateName(type);
-    
+    this.validateType(type);
+
     this.name = name;
     this.type = type;
-    this.health = health;
-    this.level = level;
-    this.attack = attack;
-    this.defence = defence;
+
+    this.health = 100;
+    this.level = 1;
+
+    this.attack = 10;
+    this.defence = 10;
   }
 
   validateName(name) {
@@ -25,8 +27,8 @@ class Character {
     }
   }
 
-  levelUp(level, attack, defence, health) {
-    if (this.health === 0) {
+  levelUp() {
+    if (this.health <= 0) {
       throw new Error('Нельзя повысить левел умершего.');
     }
 
@@ -37,8 +39,9 @@ class Character {
   }
 
   damage(points) {
-    if (this.health >= 0) {
-      this.health -= this.points * (1 - this.defence / 100);
+    if (this.health > 0) {
+      this.health -= points * (1 - this.defence / 100);
+      this.health = Math.max(0, this.health);
     }
   }
 }
